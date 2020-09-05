@@ -269,7 +269,7 @@ const pessoa2 = {
     pessoa2.andando = true
     pessoa2.caminhouQuantosMetros += metrosCaminhados
   },
-  parar: () => pessoa.andando = false,
+  parar: () => pessoa2.andando = false,
   apresentacao: () => {
     
     const anos = (pessoa2.idade === 1) ? 'ano' : 'anos'
@@ -294,7 +294,30 @@ console.log('Classes 🆕')
 
 // Vamos criar a classe Pessoa
 
+class Pessoa{
+  constructor(name, surname, age){
+    this.nome = name
+    this.sobrenome = surname
+    this.idade = age
+    this.andando = false
+    this.caminhouQuantosMetros = 0
+  }
+  fazerAniversario(){
+    this.idade++
+}
+}
 
+const pessoa3 = new Pessoa('Camila', 'Marques', '24')
+
+console.log(pessoa3.nome)
+
+const{sobrenome} = pessoa3
+
+console.log(sobrenome)
+
+pessoa3.fazerAniversario()
+
+console.log(pessoa3)
 
 
 
@@ -339,7 +362,9 @@ const numbers = [9, 2, 5]
 const db = require('./db')
 
 
+console.log(db)
 
+const {tias} = db
 
 
 
@@ -350,7 +375,7 @@ console.log('Métodos iteração ')
 
 // Mostre a tabela das tias pelo console.table()
 
-
+console.table(tias)
 
 
 
@@ -361,9 +386,14 @@ console.log('filter()')
 // filter
 // Filtre as tias que moram em SP e mostre no console.
 
+function filtrarTias (item){
+  return item.local === 'SP'
+}
 
 
+const tiasSP = tias.filter(filtrarTias)
 
+console.table(tiasSP)
 
 
 
@@ -372,10 +402,26 @@ console.log('map()')
 // map
 // Crie um novo array chamado tiasMaisChegadas e adicione uma propriedade chamada cuidouDeMim que recebe um valor booleano. Caso a tia teve até 2 filhos, isso significa que ela cuidou de mim e seu valor é true. Caso ela teve mais que 2 filhos, o valor da propriedade cuidouDeMim é false.
 
+function cuidar(tia){
+  const{ nome, idade, filhos, local } = tia
+  if (tia.filhos <= 2) {
+    const tiaNova = { 
+      nome: nome,
+      idade: idade,
+      filhos: filhos,
+      local:local,
+      cuidouDeMim: true
+    }
+   // return tia.cuidouDeMim = true
+   return tiaNova
+  } else {
+   return tia.cuidouDeMim = false    
+  }
+}
 
+const tiasMaisChegadas = tias.map(cuidar)
 
-
-
+console.log(tiasMaisChegadas)
 
 
 console.log('-----------------------------------------------------')
@@ -385,30 +431,44 @@ console.log('sort()')
 // Vamos praticar o método sort() com o array numbers
 // const numbers = [9, 2, 5]
 
-const comparar = (a, b) => {
-  if (a < b) { // primeiro vem b e depois vem a
-    return -1
-  } else if (a > b) { // mantenho a como primeiro e b vem depois
-    return 1
-  } else { // se a e b forem iguais, mantém a mesma ordem
-    return 0
-  }
-}
+//const comparar = (a, b) => {
+ // if (a < b) { // primeiro vem b e depois vem a
+  //  return -1
+  //} else if (a > b) { // mantenho a como primeiro e b vem depois
+  //  return 1
+  //} else { // se a e b forem iguais, mantém a mesma ordem
+  //  return 0
+  //}
+//}
+
+//numbers.sort(comprar)
+
+//console.log(numbers)
+
+
 
 // Refatore a função comparar e ordene numbers em ordem crescente
 
+numbers.sort((a,b) => a - b)
 
+console.log(numbers)
 
 
 
 
 
 // Ordene as tias por ordem decrescente de idade (a mais velha primeiro)
+/*function ordenarTias(a,b){
+  return b.idade - a.idade
+}
 
+tias.sort(ordenarTias)
 
+console.table(tias)*/
 
+const ordenarTias = (a,b) => b.idade - a.idade
 
-
+console.table(tias)
 
 
 
@@ -418,18 +478,31 @@ console.log('reduce()')
 
 // Faça a soma do array numbers
 
+//function somarTodos(acumulador,item){
+ // return acumulador + item
+//}
+
+//const arrayReduzido = numbers.reduce(somarTodos,0)
 
 
+const arrayReduzido = numbers.reduce((acumulador,item) => acumulador + item, 10)
 
-
+console.log(arrayReduzido)
 
 
 // Some a quantidade de netos que vovó possui.
 
+/*function somarNetos(acumulador, tia){
+  return acumulador +tia.filhos
+}
 
+const netos= tias.reduce(somarNetos, 1)
 
+console.log(netos)*/
 
+const netos = tias.reduce((acumulador, tia) => acumulador + tia.filhos, 1)
 
+console.log(netos)
 
 
 // ----------------------------------------------
