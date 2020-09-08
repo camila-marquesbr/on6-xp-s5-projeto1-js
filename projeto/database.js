@@ -1,5 +1,5 @@
 module.exports = {
-produtos: [
+products: [
     {
       id: 1,
       nome: 'Leite',

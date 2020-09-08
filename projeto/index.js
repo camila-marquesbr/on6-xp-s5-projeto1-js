@@ -3,11 +3,11 @@ console.log('     Projeto Carrinho de Compras     ')
 console.log('--------------------------------------')
 
 const db = require('./database')
-const {produtos} = db
+const {products} = db
 
 //Exercício 1
 
-onsole.table(produtos)
+console.table(products)
 //Exercício 2
 
 const readline = require('readline-sync')
