@@ -18,16 +18,38 @@ console.table(products)
 
 //Exercício 2
 
+function compra(){
 const readline = require('readline-sync')
 const inputId = parseFloat(readline.question("Qual o ID do produto?"))
 const inputQuantities = parseFloat(readline.question("Qual a quantidade  que deseja comprar? "))
-const inputDiscount = parseFloat(readline.question("Você tem algum cupom de desconto? Se sim digite aqui:"))
+const continuarComprando = parseFloat(readline.question("Você deseja continuar comprando? 1 para sim e 2 para não:"))
 
-//function discount{
-    //if (inputDiscount == true) {
-    //    let totalPriceDiscont = totalPrice * 0,1
-    //   let amountPaid = totalPrice - totalPriceDiscount
+if (continuarComprando === 1){
+  return compra()
+
+  }else if (continuarComprando ===2){
+    const cupomDesconto = parseInt(readline.question("Possui cumpom de desconto?"))
+  if (cupomDesconto >= 15) {
+    console.log("Cupom inválido")
+  }else{
+      console.log("Cupom válido")
+   }
+  }
+}
+console.log(compra())
+
+//Exercício 3
+
+
+
+
+
+//function desconto{
+    //if (cupomDesconto == true) {
+    //    let valorDoDesconto = precoTotal * 0,1
+    //   let TotalComDesconto = precoTotal - ValorDoDesconto
    // }else{
     //    console.log("Sem descontos hoje!")
   //  }
 //}
+
