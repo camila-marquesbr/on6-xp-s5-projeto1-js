@@ -41,6 +41,12 @@ console.log(compra())
 //Exercício 3
 
 
+function somarTodos(acumulador,products){
+  return acumulador + products.preco
+}
+const arrayReduzido = products.reduce(somarTodos, 0)
+
+console.log(arrayReduzido);
 
 
 
