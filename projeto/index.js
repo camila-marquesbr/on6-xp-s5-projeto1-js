@@ -29,10 +29,10 @@ function comprar() {
 
 
   function procurar(produto) {
-    return produto.id === entrarId
+     return produto.id === entrarId
   }
-
   const produtoEncontrado = produtos.find(procurar)
+    
   //console.log(produtoEncontrado)
 
   listaDeCompras.push(produtoEncontrado)
