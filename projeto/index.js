@@ -60,7 +60,16 @@ const somaSubtotais = listaSubTotais.reduce(somarTodos, 0)
 
 console.log(somaSubtotais)
 
-
+/*class Pedido{
+  constructor(listaDeProdutos, valorDoCupom, dataDoPedido){
+    this.listaDeProdutos = listaDeProdutos
+    this.valorDoCupom = valorDoCupom
+    this.dataDoPedido = dataDoPedido
+   }
+  itensTotais(acumulador, ){
+    this.listaDeProdutos.reduce(itensTotais, )
+}
+}*/
 
 /*if (continuarComprando === "N") {
   codigoDeDesconto = parseInt(readline.question("Você tem cupom de desconto?"))
