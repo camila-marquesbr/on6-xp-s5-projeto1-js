@@ -60,7 +60,7 @@ const somaSubtotais = listaSubTotais.reduce(somarTodos, 0)
 
 const somaSubtotaisReais = parseFloat(somaSubtotais.toFixed(2))
 
-console.log(`R$ ${somaSubtotaisReais}`)
+console.log(`Subtotal: R$ ${somaSubtotaisReais}`)
 
 //Perguntar se possui cupom de desconto
 const cupomDesconto = parseFloat(readline.question("Possui cupom de desconto?"))
@@ -71,10 +71,12 @@ const desconto = somaSubtotais * 0.1
 const valorTotal = somaSubtotais - desconto
 const valorTotalReais = parseFloat(valorTotal.toFixed(2))
 
-  console.log(`O seu valor total com desconto é de R$ ${valorTotalReais}`)
+  console.log(`Valor total da compra: R$ ${valorTotalReais}`)
 }else{
   console.log("Cupom inválido")
 }
+
+
 
 /*class Pedido{
   constructor(listaDeProdutos, valorDoCupom, dataDoPedido){
