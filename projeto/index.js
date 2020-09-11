@@ -36,6 +36,7 @@ function comprar() {
   //console.log(produtoEncontrado)
 
   listaDeCompras.push(produtoEncontrado)
+  listaDeCompras.push(entrarQuantidade)
 
   const subTotal = produtoEncontrado.preco * entrarQuantidade
   // console.log(subTotal)
@@ -89,16 +90,18 @@ const data = hoje.toLocaleDateString("pt-BR")
 
 // 4. Criação de uma classe chamada Pedido
 
+const arrayReduzido = quantidade.reduce((acumulador,qtdTotal) => acumulador + qtdTotal, 0)
+
 class Pedido {
-  constructor(listaDeProdutos, valorDoCupom, dataDoPedido, quantidadeItens) {
-    this.qtdTotal = listaDeProdutos
+  constructor(arrayReduzido, valorDoCupom, dataDoPedido) {
+    this.qtdItens = arrayReduzido
     this.cupom = valorDoCupom
     this.data = dataDoPedido
+  
     
   }
 }
-
-const sacola = new Pedido (quantidade, cupomDesconto, data)
+const sacola = new Pedido (arrayReduzido, cupomDesconto, data)
 
 console.table({sacola})
 
