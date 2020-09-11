@@ -21,6 +21,8 @@ console.table(produtos)
 const readline = require('readline-sync')
 const listaDeCompras = []
 const listaSubTotais = []
+const quantidade = []
+
 function comprar() {
   const entrarId = parseFloat(readline.question("Qual o ID do produto?"))
   const entrarQuantidade = parseFloat(readline.question("Qual a quantidade  que deseja comprar? "))
@@ -39,7 +41,9 @@ function comprar() {
   // console.log(subTotal)
 
   listaSubTotais.push(subTotal)
+  quantidade.push(entrarQuantidade)
 }
+
 
 let continuarComprando = "S"
 
@@ -86,19 +90,28 @@ const data = hoje.toLocaleDateString("pt-BR")
 // 4. Criação de uma classe chamada Pedido
 
 class Pedido {
-  constructor(listaDeProdutos, valorDoCupom, dataDoPedido) {
-    this.compras = listaDeProdutos
-    this.desconto = valorDoCupom
+  constructor(listaDeProdutos, valorDoCupom, dataDoPedido, quantidadeItens) {
+    this.qtdTotal = listaDeProdutos
+    this.cupom = valorDoCupom
     this.data = dataDoPedido
+    
   }
 }
 
+const sacola = new Pedido (quantidade, cupomDesconto, data)
+
+console.table({sacola})
+
+//function somarTodos(acumulador,item){
+  // return acumulador + item
+ //}
+ 
+ //const arrayReduzido = numbers.reduce(somarTodos,0)
+
+//const pedido1 = new Pedido ({listaDeCompras}, cupomDesconto, data, itens)
 
 
-const pedido1 = new Pedido ({listaDeCompras}, cupomDesconto, data)
-
-
-console.table({pedido1})
+//console.table({pedido1})
 
 
 /*if (continuarComprando === "N") {
