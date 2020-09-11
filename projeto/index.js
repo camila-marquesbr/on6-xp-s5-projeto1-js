@@ -5,7 +5,7 @@ console.log('--------------------------------------')
 const db = require('./database')
 const {produtos} = db
 
-//Exercício 1
+//Exercício 1 (Listar no console a tabela em ordem crescente de preço)
 
 console.table(produtos)
 
@@ -17,7 +17,7 @@ produtos.sort(ordenarPreco)
 console.table(produtos)
 
 
-//Exercício 2
+//Exercício 2 (receber as entradas id e quantidade)
 
 
 const readline = require('readline-sync')
@@ -58,7 +58,23 @@ function somarTodos(acumulador,subTotal){
 }
 const somaSubtotais = listaSubTotais.reduce(somarTodos, 0)
 
-console.log(somaSubtotais)
+const somaSubtotaisReais = parseFloat(somaSubtotais.toFixed(2))
+
+console.log(`R$ ${somaSubtotaisReais}`)
+
+//Perguntar se possui cupom de desconto
+const cupomDesconto = parseFloat(readline.question("Possui cupom de desconto?"))
+
+
+if (cupomDesconto === 10) {
+const desconto = somaSubtotais * 0.1
+const valorTotal = somaSubtotais - desconto
+const valorTotalReais = parseFloat(valorTotal.toFixed(2))
+
+  console.log(`O seu valor total com desconto é de R$ ${valorTotalReais}`)
+}else{
+  console.log("Cupom inválido")
+}
 
 /*class Pedido{
   constructor(listaDeProdutos, valorDoCupom, dataDoPedido){
