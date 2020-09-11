@@ -58,7 +58,7 @@ function somarTodos(acumulador,subTotal){
 }
 const somaSubtotais = listaSubTotais.reduce(somarTodos, 0)
 
-const somaSubtotaisReais = parseFloat(somaSubtotais.toFixed(2))
+const somaSubtotaisReais = somaSubtotais.toFixed(2)
 
 console.log(`Subtotal: R$ ${somaSubtotaisReais}`)
 
@@ -68,9 +68,13 @@ const cupomDesconto = parseFloat(readline.question("Possui cupom de desconto?"))
 
 if (cupomDesconto === 10) {
 const desconto = somaSubtotais * 0.1
-const valorTotal = somaSubtotais - desconto
-const valorTotalReais = parseFloat(valorTotal.toFixed(2))
+const descontoReais = desconto.toFixed(2)
 
+console.log(`Desconto: R$ ${descontoReais}`)
+
+const valorTotal = somaSubtotais - desconto
+const valorTotalReais = valorTotal.toFixed(2)
+  
   console.log(`Valor total da compra: R$ ${valorTotalReais}`)
 }else{
   console.log("Cupom inválido")
