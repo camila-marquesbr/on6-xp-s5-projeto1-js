@@ -115,6 +115,8 @@ class Pedido {
     this.cupom = valorDoCupom
     this.data = dataDoPedido
     this.compra = listaDeProdutos
+   // this.valorSubtotal = valorSubtotal
+  //  this.TotalItens = totalItens
     
   }
 }
