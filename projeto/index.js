@@ -110,23 +110,24 @@ const data1 = hoje.toLocaleDateString("pt-BR")
 const arrayReduzido = quantidade.reduce((acumulador,qtdTotal) => acumulador + qtdTotal, 0)
 
 class Pedido {
-  constructor(arrayReduzido, valorDoCupom, dataDoPedido, listaDeProdutos) {
+  constructor(arrayReduzido, valorDoCupom, dataDoPedido, listaDeProdutos, valorSubtotal, valorDesconto, valorTotal) {
     this.qtdItens = arrayReduzido
     this.cupom = valorDoCupom
     this.data = dataDoPedido
     this.compra = listaDeProdutos
-   // this.valorSubtotal = valorSubtotal
-  //  this.TotalItens = totalItens
+    this.valorSubtotal = valorSubtotal
+    this.desconto1 = valorDesconto
+    this.total = valorTotal
     
   }
 }
 
-const sacola = new Pedido (arrayReduzido, cupomDesconto, data1, listaDeCompras)
-const { qtdItens, cupom, data, compra} = sacola
+const sacola = new Pedido (arrayReduzido, cupomDesconto, data1, listaDeCompras, somaSubtotaisReais, descontoReais, valorTotalReais)
+const { qtdItens, cupom, data, compra, valorSubtotal, desconto1, total} = sacola
 console.table("Produtos adquiridos")
 console.table(sacola.compra)
 console.table("Informações da compra")
-console.table({qtdItens, cupom, data})
+console.table({qtdItens, cupom, data, valorSubtotal, desconto1, total})
 
 
 //const produtoAdicionado = {...produtoAdquirido, quantidade: quantidadeDeProduto}
