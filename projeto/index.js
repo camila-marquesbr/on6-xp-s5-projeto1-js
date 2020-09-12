@@ -21,7 +21,7 @@ console.table(produtos)
 const readline = require('readline-sync')
 const listaDeCompras = []
 const listaSubTotais = []
-//const quantidade = []
+const quantidade = []
 
 function comprar() {
   let entrarId = parseFloat(readline.question("Qual o ID do produto?"))
@@ -50,7 +50,7 @@ function comprar() {
 
   //console.log(produtoEncontrado)
 
-  //listaDeCompras.push(entrarQuantidade)
+  quantidade.push(entrarQuantidade)
 
   const subTotal = produtoEncontrado.preco * entrarQuantidade
   // console.log(subTotal)
@@ -107,7 +107,7 @@ const data1 = hoje.toLocaleDateString("pt-BR")
 
 // 4. Criação de uma classe chamada Pedido
 
-const arrayReduzido = produtoAdicionado.reduce((acumulador,qtdTotal) => acumulador + qtdTotal, 0)
+const arrayReduzido = quantidade.reduce((acumulador,qtdTotal) => acumulador + qtdTotal, 0)
 
 class Pedido {
   constructor(arrayReduzido, valorDoCupom, dataDoPedido, listaDeProdutos) {
