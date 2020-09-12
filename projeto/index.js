@@ -24,15 +24,25 @@ const listaSubTotais = []
 const quantidade = []
 
 function comprar() {
-  const entrarId = parseFloat(readline.question("Qual o ID do produto?"))
-  const entrarQuantidade = parseFloat(readline.question("Qual a quantidade  que deseja comprar? "))
+  let entrarId = parseFloat(readline.question("Qual o ID do produto?"))
 
+  // validando ID//
+  while(entrarId <= 0 || entrarId >= 9 ){
+    entrarId = parseFloat(readline.question("Digite novamente o Id..."));
+  }
 
+  let entrarQuantidade = parseFloat(readline.question("Qual a quantidade  que deseja comprar? "))
+  
+  //validando a Quantidade //
+  while(entrarQuantidade <= 0){
+    entrarQuantidade = parseFloat(readline.question("Digite a quantidade..."));
+  }
+  
   function procurar(produto) {
      return produto.id === entrarId
   }
   const produtoEncontrado = produtos.find(procurar)
-    
+
   //console.log(produtoEncontrado)
 
   listaDeCompras.push(produtoEncontrado)
@@ -67,10 +77,16 @@ console.log(`Subtotal: R$ ${somaSubtotaisReais}`)
 
 
 // 3. Perguntar se possui cupom de desconto
-const cupomDesconto = parseFloat(readline.question("Possui cupom de desconto?"))
+let cupomDesconto = parseFloat(readline.question("Possui cupom de desconto?"))
+
+//validando cupom de desconto //
+while(cupomDesconto > 15){
+  cupomDesconto = parseFloat(readline.question("Digite um cupom válido..."));
+}
+
 console.log(`Cupom: ${cupomDesconto}`)
-if (cupomDesconto === 10) {
-  const desconto = somaSubtotais * 0.1
+
+  const desconto = somaSubtotais * (cupomDesconto/100)
   const descontoReais = desconto.toFixed(2)
 
   console.log(`Desconto: R$ ${descontoReais}`)
@@ -79,13 +95,11 @@ if (cupomDesconto === 10) {
   const valorTotalReais = valorTotal.toFixed(2)
 
   console.log(`Valor total da compra: R$ ${valorTotalReais}`)
-} else {
-  console.log("Cupom inválido")
-}
+
 
 
 const hoje = new Date()
-const data = hoje.toLocaleDateString("pt-BR")
+const data1 = hoje.toLocaleDateString("pt-BR")
 
 
 // 4. Criação de uma classe chamada Pedido
@@ -93,14 +107,19 @@ const data = hoje.toLocaleDateString("pt-BR")
 const arrayReduzido = quantidade.reduce((acumulador,qtdTotal) => acumulador + qtdTotal, 0)
 
 class Pedido {
-  constructor(arrayReduzido, valorDoCupom, dataDoPedido) {
+  constructor(arrayReduzido, valorDoCupom, dataDoPedido, listaDeProdutos) {
     this.qtdItens = arrayReduzido
     this.cupom = valorDoCupom
     this.data = dataDoPedido
-  
+    this.compra = listaDeProdutos
     
   }
 }
-const sacola = new Pedido (arrayReduzido, cupomDesconto, data)
 
-console.table({sacola})
+const sacola = new Pedido (arrayReduzido, cupomDesconto, data1, listaDeCompras)
+const { qtdItens, cupom, data, compra} = sacola
+console.table("Produtos adquiridos")
+console.table(sacola.compra)
+console.table("Informações da compra")
+console.table({qtdItens, cupom, data})
+
