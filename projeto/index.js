@@ -123,3 +123,8 @@ console.table(sacola.compra)
 console.table("Informações da compra")
 console.table({qtdItens, cupom, data})
 
+
+//const produtoAdicionado = {...produtoAdquirido, quantidade: quantidadeDeProduto}
+    
+//listaDeCompras.push(produtoAdicionado)
+
